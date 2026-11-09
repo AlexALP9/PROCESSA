@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#08121e" />
+<title>Processa — сложные процессы. Простые решения.</title>
+<meta name="description" content="Processa: локальный корпоративный ИИ, цифровая независимость, работа без интернета при автономном развёртывании и автоматизация процессов." />
+<style>
+:root{color-scheme:dark;--bg:#08121e;--panel:#102033;--panel2:#13283b;--stroke:#263e53;--text:#eaf5ff;--muted:#98afc3;--mint:#74ead4;--mint2:#a6f7e8;--amber:#f7bc8e;--red:#fa9e95;--shadow:0 25px 60px rgba(0,0,0,.25)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:default}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.shell{width:min(1160px,calc(100% - 56px));margin:0 auto} .nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(18px);background:rgba(8,18,30,.87);border-bottom:1px solid rgba(77,108,132,.35)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:18px}.logo{display:inline-flex;align-items:center;gap:11px;font-weight:850;font-size:24px;letter-spacing:-1.2px}.logo-mark{display:grid;place-items:center;background:var(--mint);color:#0b2330;border-radius:11px;width:39px;height:39px;font-weight:900;font-size:25px}
+.links{display:flex;gap:27px;color:#b5c8d8;font-size:13px}.links a:hover{color:var(--mint)}.nav-cta{border:1px solid #477464;color:var(--mint);padding:11px 16px;border-radius:10px;font-size:13px;font-weight:700}.nav-cta:hover{background:#1b3b3c}
+.pill{font-size:11px;font-weight:800;color:var(--mint);letter-spacing:1.6px;text-transform:uppercase}.topnote{display:inline-flex;align-items:center;gap:9px;background:rgba(28,86,79,.36);border:1px solid #316c66;border-radius:100px;color:var(--mint2);font-size:11px;padding:8px 12px;margin-bottom:24px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 14px var(--mint)}
+.hero-wrap{position:relative;overflow:hidden;background:radial-gradient(ellipse 58% 60% at 80% 34%,rgba(23,88,97,.35),transparent 80%),radial-gradient(ellipse 55% 45% at 14% 100%,rgba(37,64,117,.19),transparent 85%)}.hero{display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:58px;padding-top:90px;padding-bottom:110px}.hero h1{font-size:clamp(44px,5.3vw,74px);line-height:1.075;font-weight:850;letter-spacing:-3.5px;margin:0 0 24px}.hero h1 em{font-style:normal;color:var(--mint)}.hero .desc{font-size:16px;line-height:1.85;color:#b5c8d7;max-width:525px;margin:0}.buttons{display:flex;flex-wrap:wrap;gap:11px;margin-top:31px}.btn{padding:14px 21px;border-radius:11px;font-size:13px;font-weight:800;background:transparent;border:1px solid #49647a;color:var(--text);transition:transform .15s,background .15s}.btn:hover{transform:translateY(-1px);background:#1b3549}.btn-primary{background:var(--mint);color:#092830;border-color:var(--mint)}.btn-primary:hover{background:#a2f4e5}.micro{display:flex;flex-wrap:wrap;gap:10px;margin-top:31px;color:#b3c8d5;font-size:11px}.micro span{padding:7px 10px;border:1px solid #2a4454;border-radius:100px;background:#13243570}
+.dashboard{border-radius:20px;border:1px solid #315568;box-shadow:var(--shadow),0 0 100px rgba(28,185,155,.08);background:linear-gradient(152deg,rgba(25,54,73,.96),rgba(13,28,45,.97));padding:20px;transform:rotate(-1deg)}.db-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:17px;border-bottom:1px solid #2e4b60}.db-head strong{font-size:13px}.chip{border-radius:100px;background:#164439;color:#88f3d4;padding:6px 9px;font-size:10px;font-weight:700}.db-sources{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:17px 0}.db-source{border:1px solid #314d61;background:#173248;padding:13px;border-radius:10px;min-height:84px}.db-source span{font-size:20px;display:block;margin-bottom:7px}.db-source strong{font-size:11px}.db-source small{display:block;color:#8eb0bf;font-size:10px;margin-top:3px}.db-centre{background:linear-gradient(110deg,#15504e,#153443);border:1px solid #408c84;text-align:center;padding:18px;border-radius:11px}.db-centre .brain{font-size:26px;color:var(--mint);margin-bottom:7px}.db-centre strong{font-size:14px}.db-centre small{display:block;color:#b5d5d5;font-size:11px;margin-top:8px}.db-arrows{text-align:center;color:var(--mint);font-size:21px;line-height:28px}.db-out{border:1px solid #2a635c;background:#133b37;border-radius:11px;padding:13px 15px;display:flex;align-items:center;gap:12px}.db-out b{color:var(--mint);font-size:20px}.db-out strong{font-size:12px}.db-out small{display:block;color:#a1c3ba;font-size:10px;margin-top:4px}.db-foot{display:flex;justify-content:space-between;margin-top:14px;color:#91aebe;font-size:10px}
+.section{padding:95px 0}.alternate{background:#0d1b2a;border-top:1px solid #203a4b;border-bottom:1px solid #203a4b}.kicker{color:var(--mint);font-size:11px;letter-spacing:2px;font-weight:850;text-transform:uppercase;margin-bottom:14px}.section-title{font-size:clamp(29px,3.9vw,47px);line-height:1.16;letter-spacing:-1.7px;margin:0 0 16px;font-weight:820;max-width:800px}.section-title span{color:var(--mint)}.section-sub{color:#9cb4c5;max-width:730px;margin:0 0 34px;font-size:14px;line-height:1.8}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:#112335;border:1px solid #2b4658;border-radius:14px;padding:25px}.card-icon{display:grid;place-items:center;border:1px solid #396b67;background:#1c4a47;color:var(--mint);width:43px;height:43px;border-radius:10px;font-size:23px;margin-bottom:18px}.card h3{font-size:17px;margin:0 0 9px}.card p{font-size:12px;line-height:1.8;color:#9cb3c5;margin:0}.card small{display:block;font-size:11px;color:#789e9b;margin-top:16px}
+.product-layout{display:grid;grid-template-columns:270px 1fr;gap:19px}.product-tabs{display:flex;flex-direction:column;gap:10px}.tab{border:1px solid #2c4859;background:#112438;color:#b9ccda;text-align:left;padding:17px 19px;border-radius:11px;font-size:14px;font-weight:770}.tab small{display:block;color:#88a2b5;font-weight:400;margin-top:5px;font-size:11px}.tab[aria-selected="true"]{background:#183b41;border-color:#52b09e;color:var(--mint)}.tab[aria-selected="true"] small{color:#c1e2de}.product-detail{min-height:300px;background:radial-gradient(circle at 90% 15%,#23545755,transparent 50%),#102437;border:1px solid #2b4d5c;border-radius:15px;padding:37px;display:flex;flex-direction:column;justify-content:space-between}.product-detail h3{font-size:32px;margin:7px 0 12px}.product-detail p{max-width:570px;color:#b2c8d6;font-size:14px;line-height:1.9}.product-detail .detail-tag{border:1px solid #3b6e69;color:#a5e9dc;border-radius:30px;padding:7px 12px;font-size:11px;display:inline-block;margin-right:7px;margin-bottom:7px}
+.demo-flag{background:#403525;color:#ffd4a5;border:1px solid #8b663c;border-radius:100px;padding:7px 10px;font-size:10px;font-weight:770;letter-spacing:.4px}.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:28px}.doc{border:1px solid #345068;border-radius:14px;background:#14293e;padding:23px}.doc-header{display:flex;align-items:center;justify-content:space-between;gap:7px}.doc-header strong{font-size:15px}.doc-header span{font-size:11px;color:#91a9bc}.doc table{border-collapse:collapse;width:100%;font-size:13px;margin-top:24px}.doc td{padding:13px 6px;border-bottom:1px solid #2a4558}.doc td:last-child{text-align:right;font-weight:750}.highlight-error{background:#642e345c;color:#ffb3a7!important;border-radius:4px}.demo-controls{display:flex;gap:13px;align-items:center;flex-wrap:wrap;margin-top:22px}.status-line{font-size:12px;color:#9cb2c2}.results{display:none;grid-template-columns:1.4fr .6fr;gap:15px;margin-top:18px}.results.visible{display:grid}.alert{background:#33252b;border:1px solid #a05c58;border-radius:12px;padding:22px}.alert h3{font-size:16px;color:#ffc3b7;margin:0 0 13px}.alert p{font-size:13px;color:#e3c7c3;margin:9px 0}.alert .subtle{color:#c8aaa6;font-size:11px}.approve{background:#11352f;border:1px solid #366f5b;border-radius:12px;padding:22px}.approve strong{font-size:14px}.approve p{font-size:11px;color:#b2d2c8;line-height:1.7}.approve .btn{padding:10px 12px;font-size:11px;width:100%}.approve .btn:disabled{opacity:.6}.saved{color:#88e7ca;font-size:12px;display:none;margin-top:8px}
+.compare{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}.compare-card{padding:30px;background:#102235;border:1px solid #2c455a;border-radius:15px}.bars{display:flex;flex-direction:column;gap:23px;margin-top:25px}.barline{display:flex;justify-content:space-between;gap:10px;font-size:12px;margin-bottom:9px;color:#c2d2df}.barback{width:100%;height:15px;border-radius:8px;background:#24394c;overflow:hidden}.barfill{height:100%;background:#607c95;border-radius:8px;transition:width .3s}.barfill.online{background:#4b9bd1}.barfill.processa{background:var(--mint)}.control-row{display:flex;justify-content:space-between;font-size:13px;margin:25px 0 12px}.control-row strong{color:var(--mint)}input[type=range]{accent-color:var(--mint);width:100%;cursor:pointer}.metric-row{display:flex;gap:14px;margin-top:21px}.metric{flex:1;border:1px solid #345567;border-radius:11px;padding:15px;background:#172e43}.metric strong{display:block;color:var(--mint);font-size:27px;letter-spacing:-1px}.metric span{font-size:10px;color:#a8bece}.fine{font-size:11px;color:#899eb1;line-height:1.8}.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{border:1px solid #2c495a;background:#102334;padding:25px;border-radius:13px}.step .n{font-size:13px;letter-spacing:2px;color:var(--mint);font-weight:800;margin-bottom:17px}.step h3{font-size:17px;margin:0 0 9px}.step p{font-size:12px;color:#9fb4c5;line-height:1.8;margin:0}
+.cta{padding:55px 30px;margin-top:45px;border:1px solid #367b75;border-radius:19px;text-align:center;background:radial-gradient(ellipse 75% 120% at 60% 100%,#215e5a55,transparent),linear-gradient(130deg,#133946,#0f2938)}.cta h2{font-size:clamp(27px,3.6vw,40px);line-height:1.2;letter-spacing:-1px;margin:0 0 12px}.cta p{color:#b7d4d8;font-size:14px;margin:0 auto 22px;max-width:630px}.cta .fine{margin:18px auto 0;max-width:590px}.footer{border-top:1px solid #203b4c;padding:30px 0;color:#869daf;display:flex;justify-content:space-between;gap:15px;font-size:11px}
+@media(max-width:900px){.hero{gap:28px}.hero h1{font-size:48px;letter-spacing:-2.4px}.links{gap:13px}.product-layout{grid-template-columns:210px 1fr}}
+@media(max-width:710px){.shell{width:min(100% - 32px,1160px)}.nav-inner{min-height:65px}.links,.nav-cta{display:none}.hero{grid-template-columns:1fr;padding-top:60px;padding-bottom:70px}.hero h1{font-size:clamp(43px,11vw,60px);letter-spacing:-2.2px}.dashboard{transform:none}.section{padding:65px 0}.cards,.flow{grid-template-columns:1fr}.product-layout{grid-template-columns:1fr}.product-tabs{display:grid;grid-template-columns:1fr 1fr}.product-detail{padding:24px;min-height:260px}.doc-grid,.compare,.results{grid-template-columns:1fr}.metric-row{flex-wrap:wrap}.footer{flex-direction:column}}
+@media(max-width:395px){.product-tabs{grid-template-columns:1fr}.hero h1{font-size:40px}.doc{padding:15px}.doc table{font-size:11px}.btn{font-size:12px;padding:12px 15px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Independence / continuity: editorial section intentionally separate from basic features. */
+.autonomy{background:radial-gradient(ellipse at 85% 13%,rgba(26,117,108,.18),transparent 50%),radial-gradient(ellipse at 6% 80%,rgba(31,72,122,.2),transparent 52%),#081522;border-top:1px solid #29525c;border-bottom:1px solid #29525c;position:relative;overflow:hidden}
+.autonomy:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(#456a751c 1px,transparent 1px),linear-gradient(90deg,#456a751c 1px,transparent 1px);background-size:39px 39px;mask-image:linear-gradient(90deg,transparent,#000 55%)}
+.autonomy>.shell{position:relative}.auto-head{max-width:820px}.auto-head .section-title{max-width:900px}.auto-lead{font-size:16px;color:#b5cbd8;line-height:1.85;max-width:830px;margin:0 0 35px}
+.auto-feature{display:grid;grid-template-columns:.97fr 1.03fr;gap:17px;align-items:stretch;margin:34px 0 42px}.auto-thesis{border:1px solid #326b67;background:linear-gradient(137deg,#12413d,#10263c);padding:32px;border-radius:18px;display:flex;flex-direction:column;justify-content:space-between;min-height:350px}.auto-bullet{display:inline-flex;align-items:center;gap:8px;background:#163f39;color:#a9f9e4;border:1px solid #428a78;border-radius:100px;font-size:11px;font-weight:800;padding:7px 11px;width:max-content;max-width:100%}.auto-thesis h3{font-size:clamp(25px,3vw,37px);letter-spacing:-1.4px;line-height:1.18;margin:25px 0 17px}.auto-thesis h3 span{color:var(--mint)}.auto-thesis p{color:#b4d4d3;line-height:1.85;font-size:13px;max-width:390px;margin:0}.auto-mini{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.auto-mini span{font-size:11px;color:#a7d6ca;border-left:2px solid #56d6bd;padding-left:10px}
+.auto-console{border:1px solid #38566b;background:#0c2032;border-radius:18px;overflow:hidden;box-shadow:0 25px 50px #0002}.auto-console-head{padding:19px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #274459}.auto-console-head strong{font-size:13px}.auto-console-head span{font-size:10px;color:#9ab1c2}.scenario-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:16px 20px 10px}.scenario-button{border:1px solid #325064;border-radius:8px;background:#132b3d;color:#b6cbd8;font-size:11px;padding:11px 7px;line-height:1.3}.scenario-button[aria-pressed=true]{border-color:#67cfbb;background:#194a46;color:#aef8e9;font-weight:800}.scenario-button:hover{border-color:#68b1a8}.auto-console-note{margin:4px 21px 12px;color:#a8c0cd;font-size:11px;line-height:1.65;min-height:34px}.auto-status-list{padding:0 20px 17px}.auto-status{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:11px 3px;border-bottom:1px solid #284254;font-size:12px;color:#d0e2e9}.auto-status:last-child{border-bottom:0}.auto-state{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;white-space:nowrap}.auto-state:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}.auto-state.good{color:#80e5bb}.auto-state.warn{color:#ffd09c}.auto-state.off{color:#f19991}.auto-console-footer{padding:11px 20px;background:#122e35;border-top:1px solid #2a5d57;font-size:10px;color:#a8c9c9}
+.auto-grid-head{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin:13px 0 18px}.auto-grid-head h3{font-size:25px;letter-spacing:-.8px;margin:0}.auto-grid-head p{font-size:12px;color:#94afc0;max-width:420px;margin:0}
+.auto-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.auto-card{padding:25px;background:linear-gradient(160deg,#12283a,#0e2030);border:1px solid #2c4e5c;border-radius:14px;position:relative}.auto-card .auto-icon{width:43px;height:43px;display:grid;place-items:center;background:#193f3d;color:var(--mint);border:1px solid #356c64;border-radius:11px;font-size:22px;margin-bottom:20px}.auto-card h4{font-size:16px;margin:0 0 12px;letter-spacing:-.25px}.auto-card p{font-size:12px;line-height:1.8;color:#a9c0ce;margin:0}.auto-card .auto-caption{margin-top:20px;padding-top:12px;border-top:1px solid #2a4757;color:#83dac8;font-size:11px;font-weight:750}
+.auto-truth{margin-top:25px;border:1px solid #34605e;background:#0e2a34;border-radius:15px;padding:25px;display:grid;grid-template-columns:1fr 1.3fr;gap:30px}.auto-truth h3{margin:0 0 10px;font-size:19px;line-height:1.3}.auto-truth p{font-size:12px;color:#abc1cb;line-height:1.8;margin:0}.auto-conditions{margin:0;padding:0;list-style:none;display:grid;gap:10px}.auto-conditions li{display:flex;gap:10px;color:#c2dae1;font-size:12px;line-height:1.6}.auto-conditions li:before{content:'✓';color:var(--mint);font-weight:900}
+.auto-caveat{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:11px;color:#a6b7c1;line-height:1.75}.auto-caveat strong{color:#dce9ea}
+@media(max-width:1000px){.auto-feature{grid-template-columns:1fr}.auto-thesis{min-height:265px}.auto-thesis h3{max-width:600px}}
+@media(max-width:710px){.auto-cards{grid-template-columns:1fr}.auto-grid-head{align-items:flex-start;flex-direction:column}.auto-truth{grid-template-columns:1fr}.auto-head .section-title{font-size:clamp(30px,7.8vw,46px)}.auto-feature{margin:22px 0 32px}.auto-thesis{padding:24px;min-height:275px}.auto-console-head{padding:15px 14px}.scenario-switch{padding:13px 12px 8px;gap:5px}.scenario-button{font-size:10px;padding:10px 4px}.auto-console-note{margin:5px 14px 9px}.auto-status-list{padding:0 14px 13px}.auto-console-footer{padding:11px 14px}.auto-card{padding:22px}.auto-truth{padding:20px;gap:12px}}
+@media(max-width:390px){.scenario-button{font-size:9px}.auto-status{font-size:11px}.auto-state{font-size:10px}}
+
+</style>
+</head>
+<body>
+<header class="nav"><div class="shell nav-inner">
+ <a class="logo" href="#top" aria-label="Processa — наверх"><span class="logo-mark">⥀</span>processa</a>
+ <nav class="links" aria-label="Навигация"><a href="#autonomy">Независимость</a><a href="#products">Продукты</a><a href="#demo">Демонстрация</a><a href="#effect">Эффективность</a></nav>
+ <a class="nav-cta" href="#start">Как начать →</a>
+</div></header>
+<main id="top">
+<section class="hero-wrap"><div class="shell hero">
+ <div><div class="topnote"><span class="dot"></span> Концепция будущей платформы Processa</div>
+ <div class="pill">Локальный ИИ для вашего бизнеса</div>
+ <h1>Сложные процессы.<br><em>Простые решения.</em></h1>
+ <p class="desc">Помогаем компаниям работать быстрее: объединяем их данные и знания, автоматизируем рутину и создаём внутренних ИИ-помощников. Система настраивается под ваши задачи, а не наоборот.</p>
+ <div class="buttons"><a class="btn btn-primary" href="#demo">Посмотреть демонстрацию ↗</a><a class="btn" href="#products">Изучить платформу</a></div>
+ <div class="micro"><span>◈ Локальное размещение</span><span>◈ Корпоративные знания</span><span>◈ Под задачи сотрудников</span></div></div>
+ <div class="dashboard" aria-label="Схема объединения корпоративных данных">
+ <div class="db-head"><strong>◈ Processa Core / Архитектура</strong><span class="chip">Демонстрация</span></div>
+ <div class="db-sources"><div class="db-source"><span>▤</span><strong>Документы и заявки</strong><small>Внутренние источники данных</small></div><div class="db-source"><span>▦</span><strong>CRM и рабочие системы</strong><small>Подключаемые интеграции</small></div></div>
+ <div class="db-arrows">↓ &nbsp;&nbsp; ↓</div>
+ <div class="db-centre"><div class="brain">✳</div><strong>Локальная LLM + база знаний</strong><small>Поиск · анализ · проверка · права доступа</small></div>
+ <div class="db-arrows">↓</div>
+ <div class="db-out"><b>✓</b><div><strong>Отчёты и подтверждённые решения</strong><small>Сохранение в истории после проверки сотрудником</small></div></div>
+ <div class="db-foot"><span>Не требуется постоянный перенос файлов</span><span style="color:var(--mint)">● Пример архитектуры</span></div>
+ </div>
+</div></section>
+<section class="section shell" id="advantages"><div class="kicker">Преимущества</div><h2 class="section-title">Не очередной чат с ИИ.<br><span>Рабочая среда компании.</span></h2><p class="section-sub">Онлайн-помощники полезны для отдельных заданий. Мы хотим дать сотрудникам систему, которая подключена к разрешённым источникам, понимает рабочий контекст и сохраняет проверенные результаты.</p>
+ <div class="cards"><article class="card"><div class="card-icon">▤</div><h3>Общая база знаний</h3><p>Документы, инструкции и подтверждённые решения доступны через единую среду, без повторного ручного ввода.</p><small>Меньше поиска и дублирования</small></article><article class="card"><div class="card-icon">⚙</div><h3>Интеграция в процессы</h3><p>Данные из CRM, таблиц и других систем поступают по настроенным правилам. Результаты можно возвращать в работу.</p><small>Меньше переключений между сервисами</small></article><article class="card"><div class="card-icon">◇</div><h3>Контроль над информацией</h3><p>Возможность локального размещения, разграничения доступа и отслеживания действий. Конфиденциальность проектируется отдельно.</p><small>Выше контроль, а не «магическая» защита</small></article></div>
+</section>
+
+<!-- Standalone value proposition: the offline model is deliberately labelled as conditional. -->
+<section class="section autonomy" id="autonomy" aria-labelledby="autonomy-title">
+ <div class="shell">
+  <div class="auto-head">
+   <div class="kicker">Processa / Цифровая независимость</div>
+   <h2 class="section-title" id="autonomy-title">Интернет отключился.<br><span>Ваша работа — нет.</span></h2>
+   <p class="auto-lead">Если модель, база знаний и нужные инструменты развёрнуты внутри компании, <strong style="color:#f0fafa">Processa сможет продолжать локальные операции даже без внешнего интернета, VPN и доступа к зарубежным ИИ-платформам.</strong> Не нужно зависеть от доступности чужого аккаунта, тарифов или региональных ограничений облачного сервиса.</p>
+  </div>
+  <div class="auto-feature">
+   <div class="auto-thesis">
+    <div><span class="auto-bullet">● Автономная инфраструктура</span><h3>Ваш интеллект.<br><span>На вашей стороне сети.</span></h3><p>Нейросеть работает на сервере предприятия или другой подконтрольной ему инфраструктуре. Сотрудники обращаются к ней через внутренний интерфейс, а корпоративные документы остаются в выбранном контуре хранения.</p></div>
+    <div class="auto-mini"><span>Без обязательного внешнего ИИ-аккаунта</span><span>Локальная сеть</span><span>Свои правила доступа</span></div>
+   </div>
+   <div class="auto-console" aria-label="Интерактивная демонстрация устойчивости локальной системы">
+    <div class="auto-console-head"><strong>◈ Что будет при ограничениях связи?</strong><span>Сценарная модель</span></div>
+    <div class="scenario-switch" role="group" aria-label="Выберите сценарий">
+     <button class="scenario-button" type="button" aria-pressed="true" data-scenario="internet">Нет интернета</button>
+     <button class="scenario-button" type="button" aria-pressed="false" data-scenario="vpn">Недоступен VPN</button>
+     <button class="scenario-button" type="button" aria-pressed="false" data-scenario="account">Заблокирован аккаунт</button>
+    </div>
+    <p class="auto-console-note" id="scenario-note" aria-live="polite">Связь с внешними сервисами потеряна. Локальные компоненты сохраняют работоспособность.</p>
+    <div class="auto-status-list" id="scenario-list">
+     <div class="auto-status"><span>Processa Core / локальная LLM</span><span class="auto-state good" id="sc-model">Доступна</span></div>
+     <div class="auto-status"><span>Корпоративная база знаний</span><span class="auto-state good" id="sc-knowledge">Доступна</span></div>
+     <div class="auto-status"><span>Локальные проверки и документы</span><span class="auto-state good" id="sc-audit">Доступны</span></div>
+     <div class="auto-status"><span>Внешние облачные ИИ-сервисы</span><span class="auto-state off" id="sc-external">Недоступны</span></div>
+     <div class="auto-status"><span>Удалённые интеграции</span><span class="auto-state off" id="sc-remote">Недоступны</span></div>
+    </div>
+    <div class="auto-console-footer">Условие: сервер, локальная сеть, питание и необходимые зависимости продолжают работать.</div>
+   </div>
+  </div>
+  <div class="auto-grid-head"><h3>Шесть опор независимого бизнеса</h3><p>Не громкие обещания «ИИ без ограничений», а конкретные возможности, которые можно заложить в архитектуру системы.</p></div>
+  <div class="auto-cards">
+   <article class="auto-card"><div class="auto-icon">⏻</div><h4>Работа без интернета</h4><p>Локальная модель, поиск по документам и внутренние сценарии могут выполняться в сети предприятия. Пропажа внешней связи не должна останавливать все рабочие инструменты одновременно.</p><div class="auto-caption">Автономность при локальном развёртывании</div></article>
+   <article class="auto-card"><div class="auto-icon">♢</div><h4>Конфиденциальность и владение данными</h4><p>Документы, переписка, внутренние инструкции и история операций могут храниться под контролем самой компании. Вы определяете, какие данные индексировать, кто их видит и что допускается передавать наружу.</p><div class="auto-caption">Контроль хранения и прав доступа</div></article>
+   <article class="auto-card"><div class="auto-icon">⛨</div><h4>Устойчивость рабочих процессов</h4><p>Независимость от доступности зарубежной подписки или конкретного облачного провайдера уменьшает один из видов операционного риска. Резервное копирование, мониторинг и обслуживание защищают уже саму локальную систему.</p><div class="auto-caption">Меньше внешних точек отказа</div></article>
+   <article class="auto-card"><div class="auto-icon">⚙</div><h4>Свобода настройки</h4><p>Компания сама выбирает допустимые бизнес-сценарии, интерфейсы, модели и правила обработки. Законные внутренние задачи не зависят от региональной доступности и продуктовой политики стороннего ИИ-чата.</p><div class="auto-caption">Ваши регламенты вместо чужих тарифных рамок</div></article>
+   <article class="auto-card"><div class="auto-icon">◎</div><h4>Знания остаются в компании</h4><p>Подтверждённые отчёты, исправления и рабочие инструкции попадают в управляемую базу знаний. При смене модели можно сохранить документы и накопленную историю без необходимости начинать работу с нуля.</p><div class="auto-caption">Непрерывность и переносимость знаний</div></article>
+   <article class="auto-card"><div class="auto-icon">↗</div><h4>Предсказуемое развитие</h4><p>Необязательно переходить на дорогой тариф при каждой новой задаче. Можно постепенно увеличивать вычислительные мощности, подключать отделы и добавлять модули. Экономику сравниваем с облаком по полной стоимости владения.</p><div class="auto-caption">Масштабирование под реальные потребности</div></article>
+  </div>
+  <div class="auto-truth">
+   <div><div class="kicker">Безопасность без иллюзий</div><h3>Автономность проектируется, а не появляется сама.</h3><p>Чтобы обещание работы без интернета было честным, нужно заранее продумать инфраструктуру, управление данными и поддерживаемые сценарии.</p></div>
+   <ul class="auto-conditions">
+    <li>Модель, хранилище и необходимые программы размещены локально, без обязательной облачной проверки лицензии.</li>
+    <li>Есть исправная локальная сеть, электропитание, резервные копии и план восстановления после сбоев.</li>
+    <li>Доступ к корпоративным данным разграничен, действия журналируются, обновления проходят проверку.</li>
+    <li>Внешние API, интернет-платежи и удалённые сервисы не обещаются как доступные без связи.</li>
+   </ul>
+  </div>
+  <div class="auto-caveat"><span aria-hidden="true">ⓘ</span><div><strong>О границах свободы.</strong> Собственная LLM позволяет не зависеть от блокировок аккаунта и ограничений конкретного облачного провайдера, но не отменяет законодательство, ответственность за результаты, требования безопасности и внутренние правила предприятия. Абсолютную конфиденциальность не гарантирует ни одна архитектура.</div></div>
+ </div>
+</section>
+
+<section class="section alternate" id="products"><div class="shell"><div class="kicker">Экосистема Processa</div><h2 class="section-title">Одна платформа.<br><span>Четыре направления.</span></h2><p class="section-sub">Начать можно с одной задачи и постепенно расширять систему вместе с бизнесом.</p>
+ <div class="product-layout"><div class="product-tabs" role="tablist" aria-label="Продукты Processa">
+ <button class="tab" role="tab" aria-selected="true" data-product="core" id="tab-core" aria-controls="product-panel">Processa Core<small>Основа и корпоративные знания</small></button>
+ <button class="tab" role="tab" aria-selected="false" data-product="assist" id="tab-assist" aria-controls="product-panel">Processa Assist<small>Помощник для сотрудников</small></button>
+ <button class="tab" role="tab" aria-selected="false" data-product="flow" id="tab-flow" aria-controls="product-panel">Processa Flow<small>Автоматизация процессов</small></button>
+ <button class="tab" role="tab" aria-selected="false" data-product="audit" id="tab-audit" aria-controls="product-panel">Processa Audit<small>Проверка и поиск расхождений</small></button>
+ </div><div class="product-detail" id="product-panel" role="tabpanel" aria-labelledby="tab-core" tabindex="0"><div><div class="kicker" id="product-kicker">Фундамент экосистемы</div><h3 id="product-name">Processa Core</h3><p id="product-description">Объединяет локальную языковую модель, корпоративные документы, историю проверенных решений и средства управления доступом в единую архитектуру.</p></div><div id="product-tags"><span class="detail-tag">Локальная LLM</span><span class="detail-tag">RAG и поиск</span><span class="detail-tag">Корпоративные данные</span></div></div></div>
+ </div></section>
+<section class="section shell" id="demo"><div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap"><div><div class="kicker">Processa Audit / Интерактивный пример</div><h2 class="section-title">Одна проверка.<br><span>Два важных расхождения.</span></h2></div><span class="demo-flag">ТЕСТОВЫЕ ДАННЫЕ</span></div><p class="section-sub">Предположим, менеджер получил счёт поставщика и должен сравнить его с заявкой. Нажми кнопку и посмотри, как будет выглядеть проверка в будущем продукте.</p>
+ <div class="doc-grid"><div class="doc"><div class="doc-header"><strong>▤ Заявка покупателя</strong><span>№ З-104</span></div><table><tbody><tr><td>Товар</td><td>Масло 5W-40</td></tr><tr><td>Количество</td><td>100 шт.</td></tr><tr><td>Цена за единицу</td><td>2 800 ₽</td></tr><tr><td>Итог</td><td>280 000 ₽</td></tr></tbody></table></div>
+ <div class="doc"><div class="doc-header"><strong>▤ Счёт поставщика</strong><span>№ С-204</span></div><table><tbody><tr><td>Товар</td><td>Масло 5W-40</td></tr><tr><td>Количество</td><td class="mismatch">90 шт.</td></tr><tr><td>Цена за единицу</td><td class="mismatch">3 000 ₽</td></tr><tr><td>Итог</td><td>270 000 ₽</td></tr></tbody></table></div></div>
+ <div class="demo-controls"><button type="button" class="btn btn-primary" id="scan">✳ Запустить проверку</button><button type="button" class="btn" id="reset">↺ Сбросить</button><span class="status-line" role="status" id="scan-status">Ожидание проверки</span></div>
+ <div class="results" id="results"><div class="alert"><h3>⚠ Обнаружено два расхождения</h3><p>01 · Количество: <strong>100 шт.</strong> в заявке, <strong>90 шт.</strong> в счёте.</p><p>02 · Цена: <strong>2 800 ₽</strong> в заявке, <strong>3 000 ₽</strong> в счёте.</p><p class="subtle">Итоговые суммы соответствуют своим документам, но условия заказа не совпадают.</p></div><div class="approve"><strong>Сохранить результат?</strong><p>В реальной системе сотрудник подтверждает проверку, затем результат попадает в историю решений.</p><button type="button" class="btn btn-primary" id="approve">✓ Подтвердить и сохранить</button><div class="saved" id="saved" role="status">✓ Добавлено в демонстрационную историю</div></div></div>
+ <p class="fine" style="margin-top:18px">Это работающий интерфейс на заранее заданных данных. В данной демоверсии нет подключённой LLM, CRM или постоянного хранения информации.</p>
+</section>
+<section class="section alternate" id="effect"><div class="shell"><div class="kicker">Модель потенциальной эффективности</div><h2 class="section-title">Меньше ручных операций.<br><span>Больше времени на важное.</span></h2><p class="section-sub">Меняй количество документов и смотри, как меняется потенциальная экономия времени в иллюстративном сценарии. Это не результаты клиентов и не гарантия производительности.</p>
+<div class="compare"><div class="compare-card"><div class="kicker">Время на один комплект</div><div class="bars"><div><div class="barline"><span>Без ИИ</span><strong>60 мин</strong></div><div class="barback"><div class="barfill" style="width:100%"></div></div></div><div><div class="barline"><span>Обычный онлайн-чат</span><strong>40 мин</strong></div><div class="barback"><div class="barfill online" style="width:66.67%"></div></div></div><div><div class="barline"><span>Processa с интеграциями</span><strong>25 мин</strong></div><div class="barback"><div class="barfill processa" style="width:41.67%"></div></div></div></div><p class="fine">Расчётное предположение: ускорение появляется прежде всего за счёт подключения данных и автоматизации, а не просто установки LLM на собственном сервере.</p></div>
+<div><div class="control-row"><span>Комплектов документов в месяц</span><strong id="volume-value">40</strong></div><input type="range" id="volume" min="10" max="200" step="10" value="40" aria-label="Количество комплектов документов в месяц"/><div class="metric-row"><div class="metric"><strong id="manual-hours">40 ч</strong><span>Ручная обработка</span></div><div class="metric"><strong id="saved-hours">23,3 ч</strong><span>Потенциально освобождается</span></div></div><p class="fine" style="margin-top:17px">Нагрузка, интеграции, точность и расходы уточняются в пилоте. Результаты сотрудник обязательно проверяет.</p></div></div></div></section>
+<section class="section shell" id="start"><div class="kicker">От идеи до внедрения</div><h2 class="section-title">Начинаем с проблемы,<br><span>а не с покупки сервера.</span></h2><p class="section-sub">На первом этапе мы планируем разработать собственную демонстрационную систему и начать с небольших пилотных проектов для компаний.</p>
+<div class="flow"><article class="step"><div class="n">01 / ДИАГНОСТИКА</div><h3>Изучаем процесс</h3><p>Выясняем, где теряется время, что можно автоматизировать, какие ограничения и требования к данным.</p></article><article class="step"><div class="n">02 / ПИЛОТ</div><h3>Показываем результат</h3><p>Создаём узкое решение, тестируем на согласованных примерах, сравниваем скорость и качество с прежним процессом.</p></article><article class="step"><div class="n">03 / РАЗВИТИЕ</div><h3>Расширяем систему</h3><p>Подключаем новые задачи и при необходимости оборудование, обучаем пользователей и предлагаем сопровождение.</p></article></div>
+<div class="cta"><div class="kicker">Processa / Проект в разработке</div><h2>Не заменяем людей.<br><span style="color:var(--mint)">Расширяем их возможности.</span></h2><p>Мы создаём инструменты, с которыми сотрудники смогут работать быстрее, внимательнее и удобнее — сохраняя контроль над важными решениями.</p><a class="btn btn-primary" href="#top">↑ Вернуться к началу</a><p class="fine">Это концептуальный презентационный лендинг. Публичная форма заявок появится после подготовки контактов и политики обработки данных.</p></div></section>
+</main>
+<footer class="shell footer"><span>© Processa · Черновой концепт v3</span><span>Core · Assist · Flow · Audit</span><span>Без действующих интеграций и коммерческих кейсов</span></footer>
+<script>
+(function(){
+ 'use strict';
+ const $ = s => document.querySelector(s);
+ const $$ = s => Array.from(document.querySelectorAll(s));
+
+ const scenarios={
+ internet:{note:'Внешняя связь пропала. Локальная модель, документы и база знаний работают внутри сети компании.',external:['off','Недоступны'],remote:['off','Недоступны']},
+ vpn:{note:'VPN недоступен. Локальные операции не зависят от VPN; работа отдельных внешних API зависит от их доступности.',external:['warn','Зависит от сервиса'],remote:['warn','Зависит от сервиса']},
+ account:{note:'Доступ к зарубежному ИИ-аккаунту закрыт. Собственная локальная модель продолжает работу.',external:['off','Нет доступа к аккаунту'],remote:['warn','Могут работать']}
+ };
+ $$('.scenario-button').forEach(button=>button.addEventListener('click',()=>{
+ const scenario=scenarios[button.dataset.scenario];
+ $$('.scenario-button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+ $('#scenario-note').textContent=scenario.note;
+ [['#sc-external',scenario.external],['#sc-remote',scenario.remote]].forEach(([selector,[state,label]])=>{const el=$(selector);el.className='auto-state '+state;el.textContent=label});
+ }));
+
+ const products={
+ core:{kicker:'Фундамент экосистемы',name:'Processa Core',description:'Объединяет локальную языковую модель, корпоративные документы, историю проверенных решений и средства управления доступом в единую архитектуру.',tags:['Локальная LLM','RAG и поиск','Корпоративные данные']},
+ assist:{kicker:'Инструмент сотрудника',name:'Processa Assist',description:'Помогает искать информацию в разрешённых источниках, готовить документы и получать ответы с опорой на актуальные внутренние правила компании.',tags:['Помощь сотрудникам','Ответы по документам','Контекст и источники']},
+ flow:{kicker:'Автоматизация рутины',name:'Processa Flow',description:'Связывает повторяющиеся рабочие действия в управляемые сценарии: от поступления данных до проверки, уведомления и передачи результата.',tags:['Сценарии','Интеграции','Согласование']},
+ audit:{kicker:'Контроль точности',name:'Processa Audit',description:'Сравнивает заявки, счета и другие документы, выделяет расхождения и формирует понятный отчёт для проверки ответственным сотрудником.',tags:['Сверка документов','Поиск ошибок','Журнал решений']}
+ };
+ $$('.tab').forEach(tab=>tab.addEventListener('click',()=>{
+ const p=products[tab.dataset.product];
+ $$('.tab').forEach(t=>t.setAttribute('aria-selected',String(t===tab)));
+ $('#product-kicker').textContent=p.kicker;$('#product-name').textContent=p.name;$('#product-description').textContent=p.description;
+ $('#product-tags').replaceChildren(...p.tags.map(t=>{const e=document.createElement('span');e.className='detail-tag';e.textContent=t;return e}));
+ $('#product-panel').setAttribute('aria-labelledby',tab.id);
+ }));
+ let scanned=false,approved=false;
+ function update(){
+ $('#results').classList.toggle('visible',scanned);
+ $$('.mismatch').forEach(el=>el.classList.toggle('highlight-error',scanned));
+ $('#scan').disabled=scanned;
+ $('#scan').textContent=scanned?'✓ Проверка завершена':'✳ Запустить проверку';
+ $('#scan-status').textContent=scanned?(approved?'Проверено, результат подтверждён':'Найдены два расхождения'):'Ожидание проверки';
+ $('#approve').disabled=approved;$('#approve').textContent=approved?'✓ Сохранено':'✓ Подтвердить и сохранить';
+ $('#saved').style.display=approved?'block':'none';
+ }
+ $('#scan').addEventListener('click',()=>{scanned=true;approved=false;update()});
+ $('#reset').addEventListener('click',()=>{scanned=false;approved=false;update()});
+ $('#approve').addEventListener('click',()=>{if(scanned){approved=true;update()}});
+ const fmt=n=>Number.isInteger(n)?String(n):n.toFixed(1).replace('.',',');
+ function calc(){const v=Number($('#volume').value);$('#volume-value').textContent=v;$('#manual-hours').textContent=fmt(v)+' ч';$('#saved-hours').textContent=fmt(v*35/60)+' ч';}
+ $('#volume').addEventListener('input',calc);calc();update();
+})();
+</script>
+</body>
+</html>
